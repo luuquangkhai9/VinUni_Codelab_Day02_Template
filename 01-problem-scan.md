@@ -1,66 +1,68 @@
-# Vin Smart Future — Phase 1 & Phase 2
+# Vin Smart Future — Problem Scan & Quick Problem Cards
 
-> **Vai trò:** AI Engineer tại Vin Smart Future  
-> **Phạm vi khảo sát:** Vinpearl / VinWonders  
-> **Lưu ý:** Các con số dưới đây là **ước tính để scoping**, dựa trên giả định một khu nghỉ dưỡng/công viên quy mô trung bình. Cần xác thực bằng log vận hành trước khi triển khai.
+**Vai trò:** AI Engineer tại Vin Smart Future  
+**Chủ đề nhóm thống nhất:** Tìm kiếm đồ thất lạc tại Vinpearl / VinWonders
 
-## Phase 1 — SCAN: Bảng quét cơ hội
+> Các con số là **ước tính scoping** cho một cơ sở quy mô trung bình, dùng để đặt baseline ban đầu; cần đối chiếu bằng log vận hành thực tế trước khi triển khai.
 
-| # | Subsidiary | Lens | Quy trình/pain point | Ước tính tổn thất hiện tại |
+## Phase 1 — SCAN
+
+| # | Đơn vị | Lens | Pain point vận hành | Ước tính tổn thất |
 |---:|---|---|---|---|
-| 1 | Vinpearl / VinWonders | Lặp lại + Tốn thời gian | Nhân viên lễ tân và CSKH đọc, phân loại rồi chuyển tiếp phản hồi từ app, email, hotline và mạng xã hội. | Khoảng 120 phản hồi/ngày × 6 phút = **12 giờ công/ngày**; 10–15% ticket bị chuyển sai, làm SLA trễ thêm 4–8 giờ. |
-| 2 | Vinpearl | Tốn thời gian + AI-upgrade | Điều phối buồng phòng tổng hợp trạng thái phòng từ PMS, điện thoại và nhóm chat để ưu tiên phòng cần dọn trước giờ check-in. | 60 phòng đến sớm/ngày × 4 phút tra cứu = **4 giờ công/ngày**; 8% phòng sẵn sàng trễ, gây khoảng 20 lượt khách chờ trên 30 phút/ngày. |
-| 3 | VinWonders | Stakeholder Pain + Lặp lại | Nhân viên vận hành thủ công đếm khách tại cổng, theo dõi hàng đợi và gọi bộ đàm để điều tiết khu trò chơi/nhà hàng. | Mỗi ca mất khoảng **90 phút** cho việc tổng hợp; thời gian chờ cao điểm tăng 10–15 phút/khách, ước tính 3–5% khách bỏ qua một dịch vụ. |
-| 4 | Vinpearl / VinWonders | Tốn thời gian + Stakeholder Pain | Tiếp nhận báo mất đồ từ nhiều điểm, hỏi lại mô tả và dò sổ bàn giao thủ công trước khi phản hồi khách. | 25 vụ/ngày × 15 phút = **6,25 giờ công/ngày**; khoảng 20% hồ sơ thiếu thông tin, làm thời gian tìm kiếm kéo dài thêm 1 ngày. |
-| 5 | VinWonders | AI-upgrade + Stakeholder Pain | Dự báo lượng khách theo khung giờ để bố trí nhân sự, xe điện và quầy dịch vụ vẫn dựa chủ yếu vào kinh nghiệm/quy tắc tĩnh. | Sai lệch dự báo khoảng 20%; có thể thừa 10–15 nhân sự ở giờ thấp điểm và thiếu 8–12 người ở giờ cao điểm, tương đương **10–15% chi phí ca** bị phân bổ kém. |
+| 1 | VinWonders | Lặp lại | Nhân viên tại cổng, trò chơi và nhà hàng ghi nhận đồ khách bỏ quên vào sổ/form với mô tả không thống nhất. | 30 vụ/ngày × 8 phút nhập liệu = **4 giờ công/ngày**; khoảng 20% hồ sơ thiếu vị trí hoặc thời gian. |
+| 2 | Vinpearl | Tốn thời gian | Lễ tân tiếp nhận cuộc gọi/email báo mất đồ, phải hỏi lại loại đồ, màu sắc, phòng và thời điểm. | 25 yêu cầu/ngày × 12 phút = **5 giờ công/ngày**; thời gian phản hồi đầu tiên thường vượt 30 phút. |
+| 3 | Vinpearl / VinWonders | AI-upgrade | Nhân viên tìm kiếm thủ công trong Excel, sổ bàn giao và thư mục ảnh bằng từ khóa khác nhau. | 25 vụ/ngày × 15 phút tìm kiếm = **6,25 giờ công/ngày**; tỷ lệ khớp ban đầu ước tính chỉ 50–60%. |
+| 4 | Vinpearl / VinWonders | Stakeholder Pain | Việc chuyển giao đồ giữa bộ phận nhặt được, an ninh, lễ tân và kho Lost & Found qua bộ đàm/nhóm chat dễ bị trễ hoặc thất lạc trạng thái. | 10% biên bản cập nhật trễ trên 2 giờ; khoảng **3–5 vụ/tháng** phải tìm lại lịch sử bàn giao. |
+| 5 | Vinpearl / VinWonders | Tốn thời gian + AI-upgrade | Nhân viên soạn thủ công tin xác minh và hẹn trả đồ bằng tiếng Việt/Anh, đồng thời kiểm tra giấy tờ nhận dạng. | 20 lượt xác minh/ngày × 7 phút = **2,3 giờ công/ngày**; 5–8% khách phải liên hệ lại vì thiếu hướng dẫn hoặc sai ngôn ngữ. |
 
-### Ưu tiên sơ bộ
+### Lựa chọn để làm Quick Cards
 
-Chọn ba bài toán **#1 (phản hồi đa kênh), #2 (điều phối buồng phòng), #4 (mất đồ)** để làm Quick Problem Cards vì có quy trình lặp lại, dữ liệu đầu vào tương đối rõ và metric đo được. Bài toán #3 cần dữ liệu camera/đếm người theo thời gian thực; #5 cần baseline dự báo và dữ liệu lịch sử đủ dài nên phù hợp giai đoạn sau.
+Ba cơ hội ưu tiên là **#2 tiếp nhận báo mất đồ**, **#3 tìm kiếm/khớp hồ sơ** và **#5 xác minh–hẹn trả**. Chúng nằm trong cùng một workflow, có dữ liệu văn bản/hình ảnh để thử nghiệm và có thể giữ người thật ở bước quyết định. Nhóm chọn **Card #3 — tìm kiếm và khớp hồ sơ Lost & Found** để làm deep-dive vì đây là bottleneck lớn nhất và metric dễ đo bằng bộ hồ sơ đã gán nhãn.
 
-## Phase 2 — QUICK-ASSESS: 3 Quick Problem Cards
+## Phase 2 — QUICK-ASSESS
 
-### Card #1 — Phân loại và soạn nháp phản hồi khách hàng đa kênh
+### Card #1 — Chuẩn hóa tiếp nhận báo mất đồ
 
 | Trường | Nội dung |
 |---|---|
-| **Bài toán** | Tự động gom, phân loại mức độ ưu tiên và soạn nháp trả lời cho phản hồi của khách tại Vinpearl/VinWonders. |
+| **Bài toán** | Biến cuộc gọi/form tự do thành hồ sơ Lost & Found có đủ loại đồ, màu, thời gian, vị trí và thông tin liên hệ. |
 | **Công ty** | Vinpearl / VinWonders |
-| **Actor đang đau** | Nhân viên CSKH, trưởng ca; khách chờ phản hồi. |
-| **Workflow hiện tại** | 1) Mở từng kênh → 2) Đọc và chép nội dung vào bảng theo dõi → 3) Gán nhóm (phòng, vé, ăn uống, sự cố) → 4) Chuyển bộ phận → 5) Tự soạn và gửi phản hồi. |
-| **Bottleneck** | Đọc–gán nhãn và viết phản hồi (khoảng **6 phút/ticket**), đặc biệt với nội dung tiếng Việt/Anh lẫn nhau. |
-| **AI hỗ trợ tại** | Bước 2–4: chuẩn hóa nội dung, phân loại, phát hiện khẩn cấp và tạo **bản nháp** theo chính sách. |
-| **Metric thành công** | 90% ticket được phân loại trong **dưới 30 giây**; thời gian soạn từ 6 xuống **dưới 2 phút**; độ chính xác route ≥ **95%**. |
-| **Quick Architecture** | **LLM Feature + Rule-based router**, bắt buộc nhân viên duyệt trước khi gửi. |
+| **Actor** | Lễ tân, nhân viên CSKH, khách du lịch. |
+| **Workflow hiện tại** | 1) Nhận cuộc gọi/form → 2) Hỏi lại mô tả → 3) Ghi sổ/Excel → 4) Chuyển bộ phận liên quan → 5) Gọi lại xác nhận. |
+| **Bottleneck** | Hỏi lại và nhập liệu không nhất quán, khoảng **12 phút/vụ**. |
+| **AI hỗ trợ** | Trích xuất trường dữ liệu từ tiếng Việt/Anh, phát hiện trường còn thiếu và tạo hồ sơ nháp để nhân viên duyệt. |
+| **Metric** | 85% hồ sơ hoàn chỉnh trong **dưới 3 phút**; giảm yêu cầu hỏi lại **30%**; không tự xác nhận quyền sở hữu. |
+| **Architecture** | Rule kiểm tra trường bắt buộc + **LLM Feature**, Human-in-the-loop. |
 
-### Card #2 — Ưu tiên điều phối buồng phòng theo giờ nhận phòng
-
-| Trường | Nội dung |
-|---|---|
-| **Bài toán** | Giúp điều phối viên chọn phòng cần dọn trước dựa trên giờ check-in, loại khách và trạng thái thực tế. |
-| **Công ty** | Vinpearl |
-| **Actor đang đau** | Housekeeping dispatcher, trưởng bộ phận buồng phòng, khách đến sớm. |
-| **Workflow hiện tại** | 1) Nhận danh sách check-in từ PMS → 2) Gọi/nhắn hỏi tình trạng từng phòng → 3) So sánh giờ đến và yêu cầu đặc biệt → 4) Gọi nhân viên dọn phòng → 5) Cập nhật PMS thủ công. |
-| **Bottleneck** | Tổng hợp trạng thái từ nhiều nguồn (khoảng **4 phút/phòng đến sớm**), dễ bỏ sót thay đổi phút cuối. |
-| **AI hỗ trợ tại** | Bước 2–3: hợp nhất trạng thái, dự đoán phòng có nguy cơ trễ và đề xuất thứ tự ưu tiên. |
-| **Metric thành công** | Giảm thời gian lập danh sách ưu tiên từ 30 xuống **dưới 5 phút/ca**; giảm phòng trễ check-in **8% → dưới 3%**; không tự thay đổi trạng thái PMS. |
-| **Quick Architecture** | **Rule/State-machine + ML/LLM tóm tắt**, nhân viên xác nhận lệnh điều phối. |
-
-### Card #3 — Tiếp nhận và tìm kiếm đồ thất lạc
+### Card #2 — Soạn tin xác minh và hẹn trả đồ
 
 | Trường | Nội dung |
 |---|---|
-| **Bài toán** | Chuẩn hóa báo mất đồ và gợi ý khớp với kho đồ thất lạc để rút ngắn thời gian tìm kiếm. |
-| **Công ty** | VinWonders / Vinpearl |
-| **Actor đang đau** | Nhân viên Lost & Found, lễ tân, khách du lịch. |
-| **Workflow hiện tại** | 1) Nhận cuộc gọi/form → 2) Hỏi lại địa điểm, thời gian, mô tả → 3) Ghi sổ hoặc file Excel → 4) Tìm thủ công ảnh/biên bản bàn giao → 5) Gọi lại xác minh và hẹn nhận. |
-| **Bottleneck** | Nhập lại thông tin và tìm kiếm bằng từ khóa không nhất quán (khoảng **15 phút/vụ**). |
-| **AI hỗ trợ tại** | Bước 2–4: trích xuất thuộc tính (màu, loại, thời gian, vị trí), tìm các bản ghi tương đồng và tạo nháp tin xác minh. |
-| **Metric thành công** | 85% hồ sơ hoàn chỉnh trong **dưới 3 phút**; giảm thời gian tìm từ 15 xuống **dưới 5 phút/vụ**; tăng tỷ lệ khớp đúng ≥ **80%** sau nhân viên xác nhận. |
-| **Quick Architecture** | **LLM Feature + vector/search**, không tự kết luận chủ sở hữu hoặc tự bàn giao tài sản. |
+| **Bài toán** | Tạo bản nháp tin nhắn đa ngôn ngữ để xác minh đúng người nhận và hướng dẫn thủ tục nhận đồ. |
+| **Công ty** | Vinpearl / VinWonders |
+| **Actor** | Nhân viên Lost & Found, lễ tân, khách quốc tế. |
+| **Workflow hiện tại** | 1) Nhân viên thấy bản ghi có khả năng khớp → 2) Đọc lại biên bản → 3) Soạn tin Việt/Anh → 4) Hỏi giấy tờ và thời gian nhận → 5) Gửi tin thủ công. |
+| **Bottleneck** | Soạn nội dung và kiểm tra thông tin, khoảng **7 phút/lượt**; dễ dùng sai ngôn ngữ hoặc thiếu giấy tờ cần thiết. |
+| **AI hỗ trợ** | Tạo draft theo mẫu chính sách, dịch, liệt kê giấy tờ và câu hỏi xác minh; nhân viên duyệt trước khi gửi. |
+| **Metric** | Giảm thời gian soạn từ 7 xuống **dưới 2 phút**; 100% tin có checklist giấy tờ; **0** tin tự động gửi. |
+| **Architecture** | **LLM Feature + template/rules**, bắt buộc HITL. |
 
-### Ranh giới chung cần ghi nhớ
+### Card #3 — Tìm kiếm và khớp hồ sơ Lost & Found *(được chọn để deep-dive)*
 
-- Số liệu là giả định scoping, không phải cam kết hiệu quả hay số liệu công bố của Vinpearl/VinWonders.
-- AI chỉ phân loại, đề xuất và soạn **draft**; nhân viên chịu trách nhiệm duyệt các phản hồi, điều phối và xác minh tài sản.
-- Dữ liệu khách phải được ẩn danh/phân quyền; các trường hợp khẩn cấp, khiếu nại pháp lý hoặc nghi ngờ gian lận phải chuyển người xử lý.
+| Trường | Nội dung |
+|---|---|
+| **Bài toán** | Gợi ý các món đồ trong kho có đặc điểm tương đồng với báo mất để nhân viên tìm nhanh hơn. |
+| **Công ty** | Vinpearl / VinWonders |
+| **Actor** | Nhân viên Lost & Found, an ninh, lễ tân; khách đang chờ kết quả. |
+| **Workflow hiện tại** | 1) Nhận báo mất → 2) Hỏi loại/màu/vị trí/thời gian → 3) Ghi Excel và lưu ảnh → 4) Tìm thủ công theo từ khóa → 5) Đối chiếu biên bản, gọi khách xác minh. |
+| **Bottleneck** | Bước 3–4: dữ liệu rời rạc, từ khóa không nhất quán, khoảng **15 phút/vụ**. |
+| **AI hỗ trợ** | Chuẩn hóa thuộc tính, tìm kiếm ngữ nghĩa/ảnh tương đồng và xếp hạng 3–5 ứng viên; nhân viên đối chiếu biên bản và quyết định. |
+| **Metric** | Giảm thời gian tìm **15 → dưới 5 phút/vụ**; Recall@5 ≥ **80%** trên bộ case gán nhãn; 100% kết quả có link bằng chứng; không tự kết luận chủ sở hữu. |
+| **Architecture** | **LLM/embedding search + metadata rules + Human review**. |
+
+### Ranh giới vận hành chung
+
+- AI chỉ chuẩn hóa, tìm kiếm, xếp hạng và soạn **bản nháp**; nhân viên chịu trách nhiệm xác minh và bàn giao.
+- Không tự khẳng định món đồ thuộc về khách, không tự gửi thông báo cuối cùng, không tự thay đổi biên bản hoặc trạng thái kho.
+- Ảnh, số điện thoại và giấy tờ phải được phân quyền/ẩn danh; trường hợp tranh chấp, tài sản giá trị cao hoặc nghi ngờ gian lận phải chuyển quản lý/an ninh.
+- Khi thiếu dữ liệu hoặc độ tin cậy thấp, hệ thống trả về “Cần nhân viên kiểm tra thủ công” và dùng quy trình hiện tại làm fallback.
