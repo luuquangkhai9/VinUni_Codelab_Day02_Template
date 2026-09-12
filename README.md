@@ -41,7 +41,7 @@ Bạn phải kích hoạt môi trường ảo mỗi khi mở terminal mới trư
 ### 📥 Bước 3: Cài đặt thư viện cần thiết
 Chạy lệnh sau để cài đặt SDK của Gemini và các thư viện hỗ trợ:
 ```bash
-pip install google-genai google-generativeai pytest
+pip install google-genai pytest
 ```
 
 ---
